@@ -64,4 +64,18 @@ RSpec.describe Food, type: :model do
       expect(Food.by_letter("N")).to eq([food3, food1])
     end
   end
+
+  describe 'Homework' do
+    it "is invalid with non-numeric value for price field" do
+      food = Food.new(
+        name: "Nasi Goreng",
+        description: 'The superior race of Nasi variant!',
+        price: "lima belas ribus"
+      )
+  
+      food.valid?
+  
+      expect(food.errors[:price])
+    end
+  end
 end
