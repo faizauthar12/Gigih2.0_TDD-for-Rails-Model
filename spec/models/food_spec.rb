@@ -77,5 +77,17 @@ RSpec.describe Food, type: :model do
   
       expect(food.errors[:price])
     end
+
+    it 'is invalid if price less than 0.01' do
+      food = Food.new(
+        name: "Nasi Goreng",
+        description: 'The superior race of Nasi variant!',
+        price: 0.001
+      )
+  
+      food.valid?
+  
+      expect(food.errors[:price])
+    end
   end
 end
