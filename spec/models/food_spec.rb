@@ -87,7 +87,7 @@ RSpec.describe Food, type: :model do
   
       food.valid?
   
-      expect(food.errors[:price])
+      expect(food.errors[:price]).to include("must be numeric")
     end
 
     it 'is invalid if price less than 0.01' do
@@ -99,7 +99,7 @@ RSpec.describe Food, type: :model do
   
       food.valid?
   
-      expect(food.errors[:price])
+      expect(food.errors[:price]).to include("must more than 0.01")
     end
   end
 end
